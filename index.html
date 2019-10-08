@@ -3113,23 +3113,25 @@ $
 <p>This can be written as:</p>
 <p><span class="math inline">\(det(A - \lambda I) = \overrightarrow{0}\)</span></p>
 <p>When we have a matrix with only values on the diagonal, we call it a Diagonal matrix. We can interpret this as all the basis vectors being eigenvectors, and the values being the eigenvalues.</p>
-<div id="transposing-a-matrixvector" class="section level3">
-<h3><span class="header-section-number">4.0.1</span> Transposing a matrix/vector</h3>
-<p>Transposing of a matrix is a new matrix whose rows are the columns of the original, and the columns become rows. Another to look it is that element <span class="math inline">\(a_{rc}\)</span> becomes <span class="math inline">\(a_{cr}\)</span> in the transposed matrix.</p>
-<pre class="r"><code>t(A)</code></pre>
-<pre><code>##      [,1] [,2]
-## [1,]    1    0
-## [2,]   -2    4</code></pre>
-</div>
-<div id="extra" class="section level3">
-<h3><span class="header-section-number">4.0.2</span> Extra</h3>
-<p>Diagonal</p>
+<p>Below i print the matrix A, and then the diagonal of A.</p>
 <pre class="r"><code>A</code></pre>
 <pre><code>##      [,1] [,2]
 ## [1,]    1   -2
 ## [2,]    0    4</code></pre>
 <pre class="r"><code>diag(A) # takes the diagonal</code></pre>
 <pre><code>## [1] 1 4</code></pre>
+<div id="transposing-a-matrixvector" class="section level3">
+<h3><span class="header-section-number">4.0.1</span> Transposing a matrix/vector</h3>
+<p>Transposing of a matrix is a new matrix whose rows are the columns of the original, and the columns become rows. Another to look it is that element <span class="math inline">\(a_{rc}\)</span> becomes <span class="math inline">\(a_{cr}\)</span> in the transposed matrix. This also means the matrix can change dimensions so a 2x3 matrix becomes a 3x2 matrix. For square matrices, the diagonal valus does not change positions.</p>
+<p>Here i show a matrix A, and then the transpose of it.</p>
+<pre class="r"><code>A</code></pre>
+<pre><code>##      [,1] [,2]
+## [1,]    1   -2
+## [2,]    0    4</code></pre>
+<pre class="r"><code>t(A)</code></pre>
+<pre><code>##      [,1] [,2]
+## [1,]    1    0
+## [2,]   -2    4</code></pre>
 </div>
 </div>
 
