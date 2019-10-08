@@ -3085,7 +3085,7 @@ Ainv</code></pre>
 <p>Link: <a href="https://www.youtube.com/watch?v=PFDu9oVAE-g" class="uri">https://www.youtube.com/watch?v=PFDu9oVAE-g</a> (3Blue1Brown) vizualized.</p>
 <p>Eigenvalues and Eigenvectors come in pairs.</p>
 <p>When linear transformations happens, then most vectors get’s knocked of their initial span (meaning: the line passing through it’s origin and the “tip” of the vector). After the transformation they will have a new span and they might have been scaled/stretched.</p>
-<p>Some vectors don’t get knocked of their span, but are only scaled, just as with scalar products. These vectors are called eigenvectors. Eigenvalues are the value describing the factor whereby a linear transformation scale/stretch. Because of linearity this implies that every vector on these eigenvectors are gonna be stretched in the same way. There can be several eigenvectors of a transformation, and they can stretch by different values.</p>
+<p>Some vectors don’t get knocked of their span, but are only scaled, just as with scalar products. These vectors are called eigenvectors. Eigenvalues are the value describing the factor whereby a linear transformation scale/stretch. Because of linearity this implies that every vector on these eigenvectors are gonna be stretched in the same way. There can be several eigenvectors of a transformation, and they can stretch by different values. There can also be no eigenvectors or unlimited.</p>
 <p>Can be negative and positive. Negative meaning that it get’s flipped. For a linear transformation in 3D, the eigenvector would be the axis of rotation, as the span(direction of vector) is still the same.</p>
 <p>As basis vectors depends on the coordinate system, eigen vectors and values are a universal way to describe the transformation.</p>
 <p>A: transformation matrix <span class="math inline">\(\lambda\)</span>: Eigenvalue <span class="math inline">\(\overrightarrow{v}\)</span>: Eigenvector</p>
@@ -3104,7 +3104,15 @@ $
 <p>$ (A - I)  = $</p>
 <p>Now we can subtract the two matrixes from each other.</p>
 <p>The matrix could look something like:</p>
-<p>$ begin{bmatrix} 3 &amp; 1 &amp; 4 \ 1 &amp; 5 &amp; 9 \ 2 &amp; 6 &amp; 5 \end{bmatrix} $</p>
+$
+<span class="math display">\[\begin{bmatrix} 3 - \lambda &amp; 1 &amp; 4 \\ 1 &amp; 5 - \lambda &amp; 9 \\ 2 &amp; 6 &amp; 5 - \lambda \end{bmatrix}\]</span>
+<p>$</p>
+<p>If the eigenvector in the equation becomes 0, then the equation would always hold, and the output would be the <span class="math inline">\(\overrightarrow{0}\)</span>.</p>
+<p>$ (A - I)  = $</p>
+<p>What we want is a nonzero solution for <span class="math inline">\(\overrightarrow{v}\)</span>. The only way that the product of the matrix becomes a zero vector, when we have a non zero vector <span class="math inline">\(\overrightarrow{v}\)</span>, is if the matrix transforms space into a lower dimension, which means the determinant will be 0. So to solve we need to adjust lambda, so that the determinant will be 0, and space is squished to a lower dimension.</p>
+<p>This can be written as:</p>
+<p><span class="math inline">\(det(A - \lambda I) = \overrightarrow{0}\)</span></p>
+<p>When we have a matrix with only values on the diagonal, we call it a Diagonal matrix. We can interpret this as all the basis vectors being eigenvectors, and the values being the eigenvalues.</p>
 <div id="transposing-a-matrixvector" class="section level3">
 <h3><span class="header-section-number">4.0.1</span> Transposing a matrix/vector</h3>
 <p>Transposing of a matrix is a new matrix whose rows are the columns of the original, and the columns become rows. Another to look it is that element <span class="math inline">\(a_{rc}\)</span> becomes <span class="math inline">\(a_{cr}\)</span> in the transposed matrix.</p>
