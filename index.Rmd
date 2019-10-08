@@ -181,6 +181,17 @@ $A_{m,n} = \begin{pmatrix} a_{1,1} & a_{1,2} & \cdots & a_{1,n} \\ a_{2,1} & a_{
 Column matrix/vector: (M x 1). Consist of a single column of "M" elements. 
 Row matrix/vector (1 x M). Consist of a single row of "M" elements. 
 
+### Addition and subtraction
+Can only be added or subtracted if they have exactly the same size. 
+
+$a=\begin{pmatrix} a_{11} & a_{12} \\ a_{21} & a_{22} &\end{pmatrix}$
+
+$b=\begin{pmatrix} b_{11} & b_{12} \\ b_{21} & b_{22} &\end{pmatrix}$
+
+$a+b=a=\begin{pmatrix} a_{11}+b_{11} & a_{12}+b_{12} \\ a_{21}+b_{21} & a_{22}+b_{22} &\end{pmatrix}$
+
+This makes sense as addition is the 2 movements combined together.
+
 ### Matrix multiplication
 Often time we want to describe the affects of several matrixes (linear transformations). The overall effect is another new linear transformation distinct from the initial transformations, so that it is one action. This is called **composition**. When taking the product of several matrixes, do it from the right to left, as the order matter. We can think of this as the columns of the right matrix to be the initial location of the basis vectors, and then apply the transformation of the left matrix. Then it's really just several vectors mulitplied by a matrix. 
 
@@ -240,7 +251,7 @@ $A^{-1}A = I = \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix}$
 
 ### Solving the system of equations. 
 
-We can solve our equation $A \overrightarrow{x} = \overrightarrow{v}$ by first finding the inverse and then applying it to both sides in the equation. 
+We can solve our equation $A \overrightarrow{x} = \overrightarrow{v}$ by first finding the inverse and then applying it to both sides in the equation.
 
 $\overrightarrow{x} = A^{-1} \overrightarrow{v}$
 
@@ -267,62 +278,6 @@ No solution(inconsistent): Visualized by 2 lines being parallel.
 1 solution(consistent): Visualized by 2 lines intersecting one time. 
 Infinit solutions: Visualized by 2 lines being the same, therefore intersecting infinitly. 
 
-### Rank and column space
-If the output of a transformation is a line it's rank 1. If it's a plane it's rank 2. If it's a 3D space, it's rank 3. So rank is the number of dimensions. Set set of all possible outputs is called the column space. If the number of dimensions is equal to the number of columns in the matrix, we call it full rank. 
-
-### Non-square matrixes
-
-Example: A 3 x 2 matrix (3 rows, 2 columns), can be interpreted as a 2D plane slicing through a 3 space. It's full rank, as the number of dimensions is equal to the number of columns in the matrix. The input is 2D and the output is 3D. There can be many such matrixes/transformations. 
-
-
-Some options for non-square matrices:
-Row reduction (by hand, difficult for big problems)
-OLS (if more rows than columns), many observations and few variables. 
-Singular value decompositions (of more columns than rows - used in principal component analysis)
-Generalized or pseudo-inverse. 
-
-### Dot product and duality
-If we have 2 vectors of the same dimensions, then we take the product of each dimensions, and then add everything together. 
-
-$\begin{bmatrix} 4 \\ 1 \end{bmatrix} * \begin{bmatrix} 2 \\ -1 \end{bmatrix} = 4*2 + 1*(-1) = 8 + (-1) = 7$
-
-
-
-
-
-
-
-
-
-I take the inner product
-```{r}
-# Inner product
-A*B
-```
-
-
-### Addition
-Can only be added if they have exactly the same size. 
-
-$a=\begin{pmatrix} a_{11} & a_{12} \\ a_{21} & a_{22} &\end{pmatrix}$
-
-$b=\begin{pmatrix} b_{11} & b_{12} \\ b_{21} & b_{22} &\end{pmatrix}$
-
-$a+b=a=\begin{pmatrix} a_{11}+b_{11} & a_{12}+b_{12} \\ a_{21}+b_{21} & a_{22}+b_{22} &\end{pmatrix}$
-
-This makes sense as addition is the 2 movements combined together. 
-
-Example: 
-
-Scalar multiplaction:
-Is a constant times a vektor. 
-$\gamma a=\gamma\begin{pmatrix} a_{11} & a_{12} \\ a_{21} & a_{22} &\end{pmatrix}$
-
-$\gamma a=\begin{pmatrix} \gamma a_{11} & \gamma a_{12} \\ \gamma a_{21} & \gamma a_{22} &\end{pmatrix}$
-
-This makes sense as the "scalar" stretches the vektor in or out, making it longer or shorter. 
-
-
 ### Augmented Matrix and operations rules
 A system of equations can be represented by an augmented matrix. 
 Here each row represents one equation, and each column represent a variable or constant. 
@@ -335,22 +290,101 @@ If A=B and C=D, then A+C=B+D, which is the same as adding rows. But remember not
 
 When solving this by hand, we use these operations in combination to make the variables (left hand side) become a form where they only have values in the diagonal, resulting in them equaling the constants (right hand side). 
 
-### Multiplication of a matrix by a scalar
-Scalar multiplicated by a matrix, is done on each individual element. It is the same at stretchin/scaling a vector or object. 
+### Rank and column space
+If the output of a transformation is a line it's rank 1. If it's a plane it's rank 2. If it's a 3D space, it's rank 3. So rank is the number of dimensions. Set set of all possible outputs is called the column space. If the number of dimensions is equal to the number of columns in the matrix, we call it full rank. 
 
-```{r}
-A*2
-```
+### Non-square matrixes
+
+Example: A 3 x 2 matrix (3 rows, 2 columns), can be interpreted as a 2D plane slicing through a 3 space. It's full rank, as the number of dimensions is equal to the number of columns in the matrix. The input is 2D and the output is 3D. There can be many such matrixes/transformations. 
+
+Some options for non-square matrices:
+Row reduction (by hand, difficult for big problems)
+OLS (if more rows than columns), many observations and few variables. 
+Singular value decompositions (of more columns than rows - used in principal component analysis)
+Generalized or pseudo-inverse. 
+
+### Dot product and duality
+If we have 2 vectors of the same dimensions, then we take the product of each dimensions, and then add everything together. 
+
+$\begin{bmatrix} 4 \\ 1 \end{bmatrix} * \begin{bmatrix} 2 \\ -1 \end{bmatrix} = 4*2 + 1*(-1) = 8 + (-1) = 7$
+
+We can imagine this as a line from origin through one of the vectors. Then the other vector projected down (so that it have a 90 degree on the line). The new projected vector is now aligned with the first vector. If we then take the product of the length of the 2 "new" vectors we have the dot product. If one vector is pointing in the opposite direction, the dot product becomes negative. If the 2 vectors are perpendicular (90 degree), then the product becomes 0. Order does not matter. 
+
+### Cross product
+
+When you take the determinant to 2 vectors, you get the area of the parallelogram the 2 vectors form. This becomes the length of the new cross product vector, which also are perpendicular to the parallelogram. 
+
+### Change of basis
+
+As standard we think of $\hat{i}$ of a scaler of x and $\hat{j}$ as a scaler of y. We can think of these 2 as implicit assumptions about the coordinate system. We think of these basis vectors of our standard coordinate system. 
+
+Instead we can choose different basis vectors. In these way we can have the "same" vector, descriped by different coordinat systems, and therefore have different numbers. The origin is still the same, but the spacing in the coordinat system is different. 
+
+How do we translate between different systems? We can think of a matrix as a linear transformation, and then after the transformation is applied this new coordinate system is the new standard. We can always take the inverse to transform back into the standard coordinate system. 
+
+# Eigenvectors and Eigenvalues
+
+Link: https://www.youtube.com/watch?v=PFDu9oVAE-g (3Blue1Brown) vizualized. 
+
+Eigenvalues and Eigenvectors come in pairs. 
+
+When linear transformations happens, then most vectors get's knocked of their initial span (meaning: the line passing through it's origin and the "tip" of the vector). After the transformation they will have a new span and they might have been scaled/stretched. 
+
+Some vectors don't get knocked of their span, but are only scaled, just as with scalar products. These vectors are called eigenvectors. Eigenvalues are the value describing the factor whereby a linear transformation scale/stretch. Because of linearity this implies that every vector on these eigenvectors are gonna be stretched in the same way. There can be several eigenvectors of a transformation, and they can stretch by different values. There can also be no eigenvectors or unlimited. 
+
+Can be negative and positive. Negative meaning that it get's flipped. For a linear transformation in 3D, the eigenvector would be the axis of rotation, as the span(direction of vector) is still the same. 
+
+As basis vectors depends on the coordinate system, eigen vectors and values are a universal way to describe the transformation. 
+
+A: transformation matrix 
+$\lambda$: Eigenvalue
+$\overrightarrow{v}$: Eigenvector
+
+$A \overrightarrow{v} = \lambda \overrightarrow{v}$
+
+We see that the matrix-vector multiplication gives the same as a scalar multiplication of the eigenvalue. 
+
+To solve this we need to find the eigenvalue and the $\overrightarrow{v}$, we do this by find $\lambda$ and $\overrightarrow{v}$ that makes the previous equation true. 
+
+We can now write the identitymatrix scaled by lamda (a number), so that lamda scales all of the basis vector.  
+
+$ \lambda \begin{bmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1\end{bmatrix}$
+
+We can rewrite the equation to be: 
+
+$A \overrightarrow{v} = (\lambda I) \overrightarrow{v}$
+
+Now that both sides a matrix vector multiplication we can subtract the right hand side. 
+
+$A \overrightarrow{v} - (\lambda I) \overrightarrow{v} = \overrightarrow{0}$
+
+Then factor out the $\overrightarrow{v}$.
+
+$ (A  - \lambda I) \overrightarrow{v} = \overrightarrow{0}$
+
+Now we can subtract the two matrixes from each other. 
+
+The matrix could look something like: 
+
+$ \begin{bmatrix} 3 - \lambda & 1 & 4 \\ 1 & 5 - \lambda & 9 \\ 2 & 6 & 5 - \lambda \end{bmatrix} $
+
+If the eigenvector in the equation becomes 0, then the equation would always hold, and the output would be the $\overrightarrow{0}$.
+
+$ (A  - \lambda I) \overrightarrow{v} = \overrightarrow{0}$
+
+What we want is a nonzero solution for $\overrightarrow{v}$. The only way that the product of the matrix becomes a zero vector, when we have a non zero vector $\overrightarrow{v}$, is if the matrix transforms space into a lower dimension, which means the determinant will be 0. So to solve we need to adjust lambda, so that the determinant will be 0, and space is squished to a lower dimension. 
+
+This can be written as: 
+
+$det(A - \lambda I) = \overrightarrow{0}$
+
+When we have a matrix with only values on the diagonal, we call it a Diagonal matrix. We can interpret this as all the basis vectors being eigenvectors, and the values being the eigenvalues. 
 
 ### Transposing a matrix/vector
 Transposing of a matrix is a new matrix whose rows are the columns of the original, and the columns become rows. Another to look it is that element $a_{rc}$ becomes $a_{cr}$ in the transposed matrix. 
 ```{r}
 t(A)
 ```
-
-
-
-
 
 ### Extra 
 Diagonal 
@@ -362,25 +396,5 @@ diag(A) # takes the diagonal
 
 
 
-# Eigenvectors and Eigenvalues
 
-Link: https://www.youtube.com/watch?v=PFDu9oVAE-g (3Blue1Brown) vizualized. 
-
-Eigenvalues and Eigenvectors come in pairs. 
-
-When linear transformations happens, then most vectors get's knocked of their initial span (meaning: the line passing through it's origin and the "tip" of the vector). After the transformation they will have a new span and they might have been scaled/stretched. 
-
-Some values don't get knocked of their span, but are only scaled, just as with scalar products. These vectors are called eigenvectors. Eigenvalues are the value describing the factor whereby a linear transformation scale/stretch. 
-
-Can be negative and positive. Negative meaning that it get's flipped. 
-
-For a linear transformation in 3D, the eigenvector would be the axis of rotation. 
-
-A: transformation matrix 
-$\lambda$: Eigenvalue
-$\overrightarrow{v}$: Eigenvector
-
-$A \overrightarrow{v} = \lambda \overrightarrow{v}$
-
-We see that the matrix-vector multiplication gives the same as a scalar multiplication. 
 
